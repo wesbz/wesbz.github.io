@@ -21,6 +21,11 @@
     {% else %}
       <h3 class="author__name" itemprop="name">{{ author.name }}</h3>
     {% endif %}
+    {% if author.email %}
+    <div class="author__email" itemprop="description">
+      {{ author.email }}
+    </div>
+    {% endif %}
     {% if author.bio %}
       <div class="author__bio" itemprop="description">
         {{ author.bio | markdownify }}
