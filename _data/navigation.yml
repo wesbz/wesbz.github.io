@@ -4,5 +4,9 @@ main:
     url: /about/
   - title: "Blog"
     url: /blog/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
   - title: "Résumé"
     url: /assets/pdf/RESUME_Wassim_BOUAZIZ_2020.pdf
