@@ -20,7 +20,7 @@
   <ul class="nav__items">
     {% if include.sidebar.dates %}
     <li>
-        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Dates</span>
+        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Dates</span>
         <ul class="list__toggle">
           {% for year in postsInYear %}
             <li><a style="display:flex; justify-content:space-between;" href="/blog/#{{ year.name }}">{{ year.name }}<span class="taxonomy__count">{{ year.items | size }}</span></a></li>
@@ -30,7 +30,7 @@
     {% endif %}
     {% if include.sidebar.categories %}
     <li>
-        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Categories</span>
+        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> <i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories</span>
         <ul class="list__toggle">
             {% for category in site.categories %}
               {% for i in (1..categories_max) %}
@@ -44,7 +44,7 @@
     {% endif %}
     {% if include.sidebar.tags %}
     <li>
-      <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Tags</span>
+      <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> <i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags</span>
       <ul class="list__toggle">
         {% for tag in site.tags %}
           {% for i in (1..tags_max) %}
