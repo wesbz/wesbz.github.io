@@ -1,0 +1,60 @@
+{% assign postsInYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%b %Y"' %}
+
+{% assign categories_max = 0 %}
+{% for category in site.categories %}
+  {% if category[1].size > categories_max %}
+    {% assign categories_max = category[1].size %}
+  {% endif %}
+{% endfor %}
+
+{% assign tags_max = 0 %}
+{% for tag in site.tags %}
+  {% if tag[1].size > tags_max %}
+    {% assign tags_max = tag[1].size %}
+  {% endif %}
+{% endfor %}
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label>
+  <ul class="nav__items">
+    {% if include.sidebar.dates %}
+    <li>
+        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Dates</span>
+        <ul class="list__toggle">
+          {% for year in postsInYear %}
+            <li><a style="display:flex; justify-content:space-between;" href="/blog/#{{ year.name }}">{{ year.name }}<span class="taxonomy__count">{{ year.items | size }}</span></a></li>
+          {% endfor %}
+        </ul>
+    </li>
+    {% endif %}
+    {% if include.sidebar.categories %}
+    <li>
+        <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Categories</span>
+        <ul class="list__toggle">
+            {% for category in site.categories %}
+              {% for i in (1..categories_max) %}
+                {% if category[1].size == i %}
+                  <li><a style="display:flex; justify-content:space-between;" href="/categories/#{{ category[0] }}">{{ category[0] }}<span class="taxonomy__count">{{ i }}</span></a></li>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+        </ul>
+    </li>
+    {% endif %}
+    {% if include.sidebar.tags %}
+    <li>
+      <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Tags</span>
+      <ul class="list__toggle">
+        {% for tag in site.tags %}
+          {% for i in (1..tags_max) %}
+            {% if tag[1].size == i %}
+              <li><a style="display:flex; justify-content:space-between;" href="/tags/#{{ tag[0] }}">{{ tag[0] }}<span class="taxonomy__count">{{ i }}</span></a></li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

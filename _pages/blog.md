@@ -5,7 +5,7 @@ title: Blog
 layout: posts
 entries_layout: grid
 sidebar:
-    date: true
+    dates: true
     tags: true
     categories: true
 ---
