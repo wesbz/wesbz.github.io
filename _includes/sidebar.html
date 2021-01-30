@@ -18,15 +18,7 @@
     {% if page.sidebar.nav %}
       {% include nav_list nav=page.sidebar.nav %}
     {% endif %}
-    {% if page.sidebar.date %}
-      {% include date-sidebar.html %}
-    {% endif %}
-    {% if page.sidebar.categories %}
-      {% include categories-sidebar.html %}
-    {% endif %}
-    {% if page.sidebar.tags %}
-      {% include tags-sidebar.html %}
-    {% endif %}
+    {% include filters-sidebar.html sidebar=page.sidebar %}
   {% endif %}
   </div>
 {% endif %}
