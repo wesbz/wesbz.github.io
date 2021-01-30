@@ -1,0 +1,25 @@
+{% assign categories_max = 0 %}
+{% for category in site.categories %}
+  {% if category[1].size > categories_max %}
+    {% assign categories_max = category[1].size %}
+  {% endif %}
+{% endfor %}
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label>
+  <ul class="nav__items">
+    <li>
+      <span class="nav__sub-title toggle" style="cursor: pointer;"><span class="toggle__triangle">&#9660</span> Categories</span>
+      <ul class="list__toggle">
+        {% for category in site.categories %}
+          {% for i in (1..categories_max) %}
+            {% if category[1].size == i %}
+              <li><a style="display:flex; justify-content:space-between;" href="/categories/#{{ category[0] }}">{{ category[0] }}<span class="taxonomy__count">{{ i }}</span></a></li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</nav>
