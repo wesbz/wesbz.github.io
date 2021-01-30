@@ -136,7 +136,7 @@ author:
       url   : "https://github.com/wesbz"
     - label : "Instagram"
       icon  : "fab fa-fw fa-instagram"
-      url : ""
+      # url : ""
 
 # Site Footer
 footer:
@@ -158,7 +158,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: ""
+      # url: ""
 
 
 # Reading Files
