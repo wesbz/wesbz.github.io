@@ -10,7 +10,6 @@
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
   z-index: 20;
-  background-image: url("https://astrotourismwa.com.au/wp-content/uploads/2018/12/Milky-Way-Galaxy-1080x675.jpg");
 
   &__inner-wrap {
     @include clearfix;
@@ -86,6 +85,10 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+
+  .active {
+    font-weight: bold;
+  }
 
   &--lg {
     padding-right: 2em;
