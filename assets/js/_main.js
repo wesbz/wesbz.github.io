@@ -232,3 +232,9 @@ $(document).ready(function () {
       });
   }
 });
+
+$(".toggle").click(function () {
+  $(this).closest(" li ").find(".list__toggle").slideToggle(300);
+  var text = $(this).find(".toggle__triangle").html();
+  $(this).find(".toggle__triangle").html(text == "▼" ? "&#9658" : "&#9660");
+});
