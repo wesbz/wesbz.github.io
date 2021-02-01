@@ -197,6 +197,13 @@
 
     &.site-title {
       margin-inline-start: 0;
+      margin-left: 0;
+      -webkit-transition: 0.2s;
+      transition: 0.2s;
+
+      &:hover {
+        color: mix(#000, $primary-color, 30%);
+      }
     }
   }
 
