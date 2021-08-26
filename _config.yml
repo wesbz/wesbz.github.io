@@ -17,7 +17,7 @@ minimal_mistakes_skin    : 'sandstorm' #"default" # "air", "aqua", "contrast", "
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Wassim Bouaziz's website"
+title                    : "Wassim (Wes) Bouaziz's website"
 title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Wassim (Wes) Bouaziz"
