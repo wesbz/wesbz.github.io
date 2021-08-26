@@ -16,7 +16,7 @@ minimal_mistakes_skin    : 'sandstorm' #"default" # "air", "aqua", "contrast", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Wassim Bouaziz's website"
+title                    : "Wes Bouaziz's website"
 title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Wassim (Wes) Bouaziz"
