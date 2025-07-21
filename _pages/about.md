@@ -36,7 +36,7 @@ I am curious and pick interest in many projects.
 
 
 - **ENS Paris-Saclay**: MSc. in **Mathematics** and **Machine Learning** (MVA).
-<details><summary><i>with highest honors</i> 🏅</summary>
+<details style="margin-left: 2em;"><summary><i>with highest honors</i> 🏅</summary>
 <table>
 <thead>
   <tr>
@@ -47,67 +47,67 @@ I am curious and pick interest in many projects.
 </thead>
 <tbody>
   <tr>
-    <td>Convex optimization and applications in machine learning</td>
+    <td><i>Convex optimization and applications in machine learning</i></td>
     <td>A. d'Aspremont</td>
     <td>19.4 / 20</td>
   </tr>
   <tr>
-    <td>Introduction to digital imaging</td>
+    <td><i>Introduction to digital imaging</i></td>
     <td>J. Delon</td>
     <td>15.0 / 20</td>
   </tr>
   <tr>
-    <td>Image denoising : the human machine competition</td>
+    <td><i>Image denoising : the human machine competition</i></td>
     <td>J.-M. Morel<br>G. Facciolo</td>
     <td>17.6 / 20</td>
   </tr>
   <tr>
-    <td>Reinforcement Learning</td>
+    <td><i>Reinforcement Learning</i></td>
     <td>A. Lazaric</td>
     <td>17.0 / 20</td>
   </tr>
   <tr>
-    <td>Graphs in Machine Learning</td>
+    <td><i>Graphs in Machine Learning</i></td>
     <td>M. Valko</td>
     <td>18.27 / 20</td>
   </tr>
   <tr>
-    <td>Deep Learning</td>
+    <td><i>Deep Learning</i></td>
     <td></td>
     <td>19.0 / 20</td>
   </tr>
   <tr>
-    <td>Internship</td>
+    <td><i>Internship</i></td>
     <td>G. Synnaeve</td>
     <td>16.5 / 20</td>
   </tr>
   <tr>
-    <td>Multi-scale models and convolutional neural networks</td>
+    <td><i>Multi-scale models and convolutional neural networks</i></td>
     <td>S. Mallat</td>
     <td>16.0 / 20</td>
   </tr>
   <tr>
-    <td>Audio Signal Analysis, Indexing and Transformations</td>
+    <td><i>Audio Signal Analysis, Indexing and Transformations</i></td>
     <td>G. Richard</td>
     <td>16.0 / 20</td>
   </tr>
   <tr>
-    <td>Introduction to Medical Image Analysis</td>
+    <td><i>Introduction to Medical Image Analysis</i></td>
     <td></td>
     <td>14.5 / 20</td>
   </tr>
   <tr>
-    <td>Kernel methods for machine learning</td>
+    <td><i>Kernel methods for machine learning</i></td>
     <td>J.-P. Vert</td>
     <td>11.0 / 20</td>
   </tr>
   <tr>
-    <td>Deep learning in practice</td>
+    <td><i>Deep learning in practice</i></td>
     <td></td>
     <td>12.7 / 20</td>
   </tr>
   <tr>
-    <td>Algorithms for speech and natural language processing</td>
+    <td><i>Algorithms for speech and natural language processing</i></td>
     <td>E. Dupoux<br>B. Sagot</td>
     <td>13.1 / 20</td>
   </tr>

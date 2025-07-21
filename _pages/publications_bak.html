@@ -1,0 +1,49 @@
+---
+title: "Publications"
+permalink: /publications_bak/
+collection: publications
+entries_layout: list
+classes: wide
+author_profile: true
+---
+
+<p>Publications and projects. You can also find most up-to-date entries for my latest publications on the Google Scholar page.</p>
+<div style="display: flex; flex-direction: column; gap: 1.5em;">
+  {% assign pubs = site.publications | sort: 'date' | reverse %}
+  {% for pub in pubs %}
+    <div style="display: flex; flex-direction: row;">
+      <!-- Image column -->
+      <div style="flex: 0 0 33%; max-width: 33%; padding: 0 15px;">
+        {% if pub.header.teaser %}
+          <img src="{{ pub.header.teaser | relative_url }}" alt="{{ pub.title }} teaser" style="max-width: 100%; height: auto; object-fit: contain; border-radius: 6px; box-shadow: 0 2px 8px #0001;" />
+        {% endif %}
+      </div>
+      <!-- Main content column -->
+      <div style="flex: 0 0 66%; padding: 0 15px;">
+        <h2 class="archive__item-title no_toc" style="padding-bottom: 0;" itemprop="headline">
+          {% if pub.link %}
+            <a href="{{ pub.link }}">{{ title }}</a> <a href="{{ pub.url | relative_url }}"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+          {% else %}
+            <a href="{{ pub.url | relative_url }}">{{ pub.title }}</a>
+          {% endif %}
+        </h2>
+        <div style="margin-bottom: 0.2em;">
+          {% if pub.authors %}{{ pub.authors }}<br>{% endif %}
+          {% if pub.venue or pub.date or pub.note %}
+            <span style="font-style: italic; color: #444;">{% if pub.venue %}{{ pub.venue }}, {% endif %}{% if pub.date %}{{ pub.date | date: '%b, %Y' }}{% endif %}{% if pub.note %}, {{ pub.note }}{% endif %}</span>
+          {% endif %}
+        </div>
+        {% if pub.excerpt %}<div style="margin-bottom: 0.5em; color: #333;">{{ pub.excerpt | markdownify }}</div>{% endif %}
+        <!-- Buttons -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.5em;">
+          {% if pub.html %}<a href="{{ pub.html }}" class="btn">HTML</a>{% endif %}
+          {% if pub.arxiv %}<a href="{{ pub.arxiv }}" class="btn btn--primary">ARXIV</a>{% endif %}
+          {% if pub.code %}<a href="{{ pub.code }}" class="btn btn--primary">CODE</a>{% endif %}
+          {% if pub.pdf %}<a href="{{ pub.pdf }}" class="btn btn--primary">PDF</a>{% endif %}
+          {% if pub.bib %}<a href="{{ pub.bib }}" class="btn btn--primary">BIB</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
