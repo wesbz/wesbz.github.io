@@ -1,0 +1,6 @@
+@article{bareilles2025monotonicity,
+  title={On Monotonicity in AI Alignment},
+  author={Bareilles, Gilles and Fageot, Julien and Hoang, L{\^e}-Nguy{\^e}n and Blanchard, Peva and Bouaziz, Wassim and Rouault, S{\'e}bastien and El-Mhamdi, El-Mahdi},
+  journal={arXiv preprint arXiv:2506.08998},
+  year={2025}
+}
