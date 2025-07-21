@@ -18,6 +18,8 @@
                 href="{{ link.url | relative_url }}"
                 {% if link.description %} title="{{ link.description }}"{% endif %}
                 {% if link.target %} target="{{ link.target }}"{% endif %}
+                {% assign nav_url = include.url | replace: '/index.html', '/' %}
+                {% if nav_url == link.url %}class="active"{% endif %}
               >{{ link.title }}</a>
             </li>
           {%- endfor -%}
