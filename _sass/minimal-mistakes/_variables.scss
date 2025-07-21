@@ -6,7 +6,7 @@
    Typography
    ========================================================================== */
 
-$doc-font-size: 16px !default;
+$doc-font-size: 14px !default;
 $doc-font-size-medium: $doc-font-size * 1.125 !default;
 $doc-font-size-large: $doc-font-size * 1.25 !default;
 $doc-font-size-x-large: $doc-font-size * 1.375 !default;
@@ -44,6 +44,8 @@ $times: Times, serif !default;
 $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
+$merriweather: 'Merriweather', serif !default;
+$inter: 'Inter', sans-serif !default;
 
 /* Monospace - modern font stack */
 $monospace-code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
@@ -65,9 +67,14 @@ $sans-serif: $default-sans-serif !default;
 $sans-serif-narrow: $sans-serif !default;
 $monospace: $default-monospace !default;
 
-$global-font-family: $sans-serif !default;
-$header-font-family: $sans-serif !default;
-$caption-font-family: $serif !default;
+// $global-font-family: $sans-serif !default;
+// $header-font-family: $sans-serif !default;
+// $caption-font-family: $serif !default;
+// $nav-font-family: $sans-serif-narrow !default;
+$global-font-family: $inter !default;
+$header-font-family: $inter !default;
+$caption-font-family: $inter !default;
+$nav-font-family: $inter !default;
 
 /* type scale */
 $type-size-1: 2.441em !default; // ~39.056px

@@ -41,3 +41,23 @@ th {
 tbody tr:nth-child(even){
   background-color: #f1eee6;
 }
+
+.news {
+  width: 100%;
+
+  table {
+    width: 100%;
+    font-size: $type-size-6;
+    display: table;
+
+    th {
+      white-space: nowrap;
+      padding: 0.5em;
+    }
+
+    td {
+      padding: 0.5em;
+      border: 0;
+    }
+  }
+}

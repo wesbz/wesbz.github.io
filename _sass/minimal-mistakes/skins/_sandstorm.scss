@@ -3,13 +3,15 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #f3f3f3 !default;
+// $background-color: #f3f3f3 !default;
+$background-color: #f7f4ef !default;
 $text-color: #343434 !default;
 $muted-text-color: #8e8b82 !default;
 $primary-color: #c2993e !default;
 $border-color: #e9dcbe !default;
 $footer-background-color: #e9dcbe !default;
 $link-color: #343434 !default;
+$link-color-hover: $primary-color !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;

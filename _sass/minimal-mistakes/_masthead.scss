@@ -22,7 +22,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: $sans-serif-narrow;
+    font-family: $nav-font-family;
 
     @include breakpoint($x-large) {
       max-width: $max-width;
@@ -83,6 +83,9 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  text-transform: uppercase;
+  font-size: $type-size-6;
+  font-weight: 600;
 
   .active {
     font-weight: bold;
