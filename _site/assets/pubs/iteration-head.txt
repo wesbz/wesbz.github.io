@@ -1,8 +1,0 @@
-@article{cabannes2024iteration,
-  title={Iteration head: A mechanistic study of chain-of-thought},
-  author={Cabannes, Vivien and Arnal, Charles and Bouaziz, Wassim and Yang, Xingyu and Charton, Francois and Kempe, Julia},
-  journal={Advances in Neural Information Processing Systems},
-  volume={37},
-  pages={109101--109122},
-  year={2024}
-}

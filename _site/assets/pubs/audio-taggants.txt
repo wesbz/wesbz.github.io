@@ -1,8 +1,0 @@
-@inproceedings{bouaziz2025targeted,
-  title={Targeted Data Poisoning for Black-Box Audio Datasets Ownership Verification},
-  author={Bouaziz, Wassim Wes and El-Mhamdi, El-Mahdi and Usunier, Nicolas},
-  booktitle={ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
-  pages={1--5},
-  year={2025},
-  organization={IEEE}
-}

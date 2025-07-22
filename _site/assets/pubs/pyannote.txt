@@ -1,8 +1,0 @@
-@inproceedings{bredin2020pyannote,
-  title={Pyannote. audio: neural building blocks for speaker diarization},
-  author={Bredin, Herv{\'e} and Yin, Ruiqing and Coria, Juan Manuel and Gelly, Gregory and Korshunov, Pavel and Lavechin, Marvin and Fustes, Diego and Titeux, Hadrien and Bouaziz, Wassim and Gill, Marie-Philippe},
-  booktitle={ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
-  pages={7124--7128},
-  year={2020},
-  organization={IEEE}
-}

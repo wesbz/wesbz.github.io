@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wesbz.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wesbz.github.io/" rel="alternate" type="text/html" /><updated>2025-07-22T02:20:41+02:00</updated><id>https://wesbz.github.io/feed.xml</id><title type="html">Wassim (Wes) Bouaziz’s website</title><subtitle></subtitle><author><name>Wassim (Wes) Bouaziz</name><email>wassim.s.bouaziz@gmail.com</email></author><entry><title type="html">On generating prime numbers quickly in Python</title><link href="https://wesbz.github.io/generating-primes/" rel="alternate" type="text/html" title="On generating prime numbers quickly in Python" /><published>2021-08-19T00:00:00+02:00</published><updated>2021-08-19T00:00:00+02:00</updated><id>https://wesbz.github.io/generating-primes</id><content type="html" xml:base="https://wesbz.github.io/generating-primes/"><![CDATA[<p>I wanted to generate a long list of prime numbers (all prime numbers below 1B).</p>
+
+<h2 id="the-terrible-way">The terrible way</h2>
+
+<p>I remember watching a terrible python tutorial not so long ago with a terrible (if not the worst) way of doing this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">def</span> <span class="nf">prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nf">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">tqdm</span><span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span>
+</code></pre></div></div>
+
+<p>This is a terrible way of computing all prime number up until \(n\) for several reasons:</p>
+<ul>
+  <li>primality tests are less efficient than using sieves when trying to generate a list of primes;</li>
+  <li>there is no need to look above \(\sqrt{k}\) when determining if \(k\) is prime.
+Let’s time it for \(n = 100\ 000\):
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 30.8 s, sys: 12 ms, total: 30.8 s
+Wall time: 30.8 s
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h2>
+
+<p>This algorithm has been attributed to <em>Eratosthene of Cyrene</em>, a Greek mathematician (see its <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wikipedia article</a>) and eliminates the multiples of numbers:</p>
+
+<ul>
+  <li>we generate an array of length \(n\):</li>
+</ul>
+
+<p><img src="https://wesbz.github.io/assets/images/posts/eratosthene_1.png" alt="Sieve of Eratosthene step 1" class="align-center" /></p>
+
+<ul>
+  <li>we ignore the \(1\) and start at \(i=2\) and eliminate all its multiples:</li>
+</ul>
+
+<p><img src="https://wesbz.github.io/assets/images/posts/eratosthene_2.png" alt="Sieve of Eratosthene step 2" class="align-center" /></p>
+
+<ul>
+  <li>with \(i=3\), we eliminate all its multiples:</li>
+</ul>
+
+<p><img src="https://wesbz.github.io/assets/images/posts/eratosthene_3.png" alt="Sieve of Eratosthene step 3" class="align-center" /></p>
+
+<ul>
+  <li>and so on:</li>
+</ul>
+
+<p><img src="https://wesbz.github.io/assets/images/posts/eratosthene_4.png" alt="Sieve of Eratosthene step 4" class="align-center" /></p>
+
+<p>It has a complexity of \(O(N \log{N})\).<br />
+A first implementation would be:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">def</span> <span class="nf">eratosthene</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">is_prime</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">tqdm</span><span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">is_prime</span>
+</code></pre></div></div>
+
+<p>If we time it for \(n = 100\ 000\):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 144 ms, sys: 4.06 ms, total: 148 ms
+Wall time: 147 ms
+</code></pre></div></div>
+<p>Over 200× faster. But we can improve that.
+Storing such a big array can be troublesome and storing the numbers is a waste of memory. We can settle with only storing a \({0, 1}\) array <code class="language-plaintext highlighter-rouge">is_prime</code>. For efficiency purpose, we will use a numpy array of <code class="language-plaintext highlighter-rouge">numpy.bool</code>. Numpy smallest variable size is <code class="language-plaintext highlighter-rouge">bool</code>, which uses 1 byte of memory. Also, if <code class="language-plaintext highlighter-rouge">is_prime[i] == 0</code>, there’s no need to change its multiples indices entries as they must have already been set to 0 (if there are two integers \(k, p\) such that \(i=k \times p\), then all of its multiples are also multiples of \(k\) and \(p\) and must have already been flagged as non prime). We can further leverage numpy’s array operations to change all the multiple’s indices in the <code class="language-plaintext highlighter-rouge">is_prime</code> array (<code class="language-plaintext highlighter-rouge">is_prime[2*i-1::i]</code>), and avoid the inner loop. Finally, we can lower the loop’s upper bound to \(\frac{n}{2} + 1\) as <code class="language-plaintext highlighter-rouge">is_prime[2*i-1::i] == array([])</code> for \(i &gt; \frac{n}{2}\):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">eratosthene</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">is_prime</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">ones</span><span class="p">((</span><span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nb">bool</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">tqdm</span><span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">continue</span>
+        <span class="n">is_prime</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">::</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">is_prime</span>
+</code></pre></div></div>
+<p>Let’s time it for \(n = 100\ 000\):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 46.3 ms, sys: 0 ns, total: 46.3 ms
+Wall time: 45.3 ms
+</code></pre></div></div>
+
+<p>But storing each flag in an 8 bits variable is a waste of memory… We can improve that.
+The Python library <a href="https://pypi.org/project/bitarray/">bitarray</a> allows to use arrays of 1 bit elements. This further improves the memory savings and the speed of our implementation:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="n">bitarray</span> <span class="kn">import</span> <span class="n">bitarray</span>
+
+<span class="k">def</span> <span class="nf">eratosthene</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">is_prime</span> <span class="o">=</span> <span class="nf">bitarray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">is_prime</span><span class="p">.</span><span class="nf">setall</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">tqdm</span><span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">continue</span>
+        <span class="n">is_prime</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">::</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">is_prime</span>
+</code></pre></div></div>
+<p>Let’s time it for \(n = 100\ 000\):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 18.5 ms, sys: 0 ns, total: 18.5 ms
+Wall time: 18.4 ms
+</code></pre></div></div>
+
+<p>Which leads to a final <strong>\(1673\times\) speed-up</strong> with an optimized memory footprint (<strong>\(\frac{1}{8}\times\)</strong> improvement).</p>
+
+<h2 id="sieve-of-atkin">Sieve of Atkin</h2>
+
+<p>The sieve of Atkin is an even more sophisticated algorithm created in 2003 relying on modulo 60 remainders and bit flipping. The complete algorithm is described on its <a href="https://en.wikipedia.org/wiki/Sieve_of_Atkin">Wikipedia article</a>. It has a linear complexity (\(O(N)\)) or sublinear depending on the version of the algorithm (\(O(\frac{N}{\log{N}})\))
+Inspired by <a href="https://gist.github.com/mineta/7840849">this implementation</a> of the sieve and using as many as the previous tricks, we time its execution for \(n = 100\ 000\).</p>
+
+<p>However, when timing it:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 149 ms, sys: 0 ns, total: 149 ms
+Wall time: 148 ms
+</code></pre></div></div>
+
+<p>Even though the Sieve of Atkin has a better time complexity, it doesn’t mean that it has a faster implementation, it only gives you asymptotical information. The iterative nature of this algorithm prevents from using tricks to speed up the process as we did the the sieve of Eratosthene.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; is_prime = eratosthene(1_000_000_000)
+100%|████████████████████| 499999999/499999999 [04:41&lt;00:00, 1773674.29it/s]
+</code></pre></div></div>
+<p>In under 5 minutes, we obtained the list of all prime numbers below 1 billion using the sieve of Eratosthene.</p>]]></content><author><name>Wassim (Wes) Bouaziz</name><email>wassim.s.bouaziz@gmail.com</email></author><summary type="html"><![CDATA[I wanted to generate a long list of prime numbers (all prime numbers below 1B).]]></summary></entry><entry><title type="html">Why am I creating a blog?</title><link href="https://wesbz.github.io/why-a-blog/" rel="alternate" type="text/html" title="Why am I creating a blog?" /><published>2021-01-14T00:00:00+01:00</published><updated>2021-01-14T00:00:00+01:00</updated><id>https://wesbz.github.io/why-a-blog</id><content type="html" xml:base="https://wesbz.github.io/why-a-blog/"><![CDATA[<p>I’ve been thinking about a way to share my projects, ideas and notes for a long time now.</p>
+
+<h2 id="how-did-i-build-this-website">How did I build this website</h2>
+
+<h3 id="why-not-medium-">Why not Medium ?</h3>
+
+<p>Not being able to use $ \LaTeX $ in Medium convinced me not make the effort and host a blog elsewhere.<br />
+Sure, you can always find a trick to display your formulas there, but I still feel like I want to write my math in my Markdown file and be able to change it without going through the process of generating new images only to embed them in a post (I use this <a href="https://www.codecogs.com/latex/eqneditor.php">LaTeX equations online editor</a> which is great to create slides). I might decide to publish a few things on Medium later on, but for now, this website should do the trick.</p>
+
+<h3 id="why-go-with-jekyll-">Why go with Jekyll ?</h3>
+
+<p>I felt like building this website would be a good web development experience as I decided to go with the Jekyll framework. After navigating through templates websites, I found the <a href="https://mmistakes.github.io/minimal-mistakes/">Minimal Mistakes</a> template. It looks great, is easily customizable, responsive, exactly what I wanted for this website.<br />
+Jekyll is the framework I most commonly saw when it came to personnal website for the machine learning community, is popular and highly supported.</p>
+
+<h3 id="why-not-wordpress-">Why not WordPress ?</h3>
+
+<p>WordPress is too mainstream, I guess 🤷. Also, I already tried building a static website hosted on GitHubPages with WordPress (see <a href="https://wesbz.github.io/PEC">this website I build for a friend’s project</a>) and it was a pain. WordPress generates so many files, you can’t just edit one tiny little bit without going through a long building process.</p>]]></content><author><name>Wassim (Wes) Bouaziz</name><email>wassim.s.bouaziz@gmail.com</email></author><summary type="html"><![CDATA[I’ve been thinking about a way to share my projects, ideas and notes for a long time now.]]></summary></entry></feed>

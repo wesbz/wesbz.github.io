@@ -1,6 +1,0 @@
-@article{bouaziz2025winter,
-  title={Winter Soldier: Backdooring Language Models at Pre-Training with Indirect Data Poisoning},
-  author={Bouaziz, Wassim and Videau, Mathurin and Usunier, Nicolas and El-Mhamdi, El-Mahdi},
-  journal={arXiv preprint arXiv:2506.14913},
-  year={2025}
-}

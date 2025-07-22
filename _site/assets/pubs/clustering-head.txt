@@ -1,6 +1,0 @@
-@article{odonnat2024clustering,
-  title={Clustering Head: A Visual Case Study of the Training Dynamics in Transformers},
-  author={Odonnat, Ambroise and Bouaziz, Wassim and Cabannes, Vivien},
-  journal={arXiv preprint arXiv:2410.24050},
-  year={2024}
-}
