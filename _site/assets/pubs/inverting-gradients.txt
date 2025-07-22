@@ -1,6 +1,0 @@
-@article{bouaziz2024inverting,
-  title={Inverting gradient attacks makes powerful data poisoning},
-  author={Bouaziz, Wassim and El-Mhamdi, El-Mahdi and Usunier, Nicolas},
-  journal={arXiv preprint arXiv:2410.21453},
-  year={2024}
-}

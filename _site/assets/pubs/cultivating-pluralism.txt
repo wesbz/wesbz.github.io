@@ -1,6 +1,0 @@
-@article{zhang2025cultivating,
-  title={Cultivating Pluralism In Algorithmic Monoculture: The Community Alignment Dataset},
-  author={Zhang, Lily Hong and Milli, Smitha and Jusko, Karen and Smith, Jonathan and Amos, Brandon and Revel, Manon and Kussman, Jack and Titus, Lisa and Radharapu, Bhaktipriya and Yu, Jane and others},
-  journal={arXiv preprint arXiv:2507.09650},
-  year={2025}
-}
