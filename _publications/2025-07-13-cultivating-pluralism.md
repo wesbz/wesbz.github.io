@@ -1,7 +1,7 @@
 ---
 title: "Cultivating Pluralism In Algorithmic Monoculture: The Community Alignment Dataset"
 header:
-    teaser: "https://thedailyeconomy.org/wp-content/uploads/sites/10/2024/06/diversity.jpg"
+    teaser: "/assets/images/pubs/cultivating-pluralism/teaser.jpg"
 authors:
     - name: Lily Hong Zhang
       url: https://lhz1029.github.io/
@@ -24,7 +24,7 @@ authors:
     - name: Kris Rose
     - name: Maximilian Nickel
       url: https://maxn.io/
-venue: "2nd Workshop on Models of Human Feedback for AI Alignment (MoFA) ICML 2025"
+venue: "International Conference on Learning Representations (ICLR) 2026"
 arxiv: "https://arxiv.org/abs/2507.09650"
 code: "https://huggingface.co/datasets/facebook/community-alignment-dataset"
 pdf: "https://arxiv.org/pdf/2507.09650"

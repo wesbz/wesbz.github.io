@@ -8,7 +8,7 @@ authors:
     - name: Nicolas Usunier
     - name: El Mahdi El Mhamdi
       url: https://elmahdielmhamdi.com/
-venue: "ICLR 2025 Workshop on GenAI Watermarking (WMARK)"
+venue: "International Conference on Learning Representations (ICLR) 2026"
 arxiv: "https://arxiv.org/abs/2506.14913"
 # code: "https://github.com/wesbz/okok"
 pdf: "https://arxiv.org/pdf/2506.14913"

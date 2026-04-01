@@ -8,7 +8,7 @@ authors:
     - name: El Mahdi El Mhamdi
       url: https://elmahdielmhamdi.com/
     - name: Nicolas Usunier
-venue: "arXiv preprint arXiv:2410.21453"
+venue: "Transactions on Machine Learning Research (TMLR) 2025"
 arxiv: "https://arxiv.org/abs/2410.21453"
 # code: "https://github.com/wesbz/okok"
 pdf: "https://arxiv.org/pdf/2410.21453"
