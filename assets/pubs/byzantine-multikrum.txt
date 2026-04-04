@@ -1,0 +1,6 @@
+@article{bareilles2026byzantine,
+  title={Byzantine Machine Learning: MultiKrum and an optimal notion of robustness},
+  author={Bareilles, Gilles and Bouaziz, Wassim and Fageot, Julien and El-Mhamdi, El-Mahdi},
+  journal={arXiv preprint arXiv:2602.03899},
+  year={2026}
+}
